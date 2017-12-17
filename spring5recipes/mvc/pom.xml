@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>kr.cloudscape.spring.spring5recipes</groupId>
-    <artifactId>mvc</artifactId>
+    <groupId>com.apress.springrecipes</groupId>
+    <artifactId>court</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>mvc</name>
+    <name>court</name>
     <description></description>
 
     <properties>
@@ -16,6 +16,8 @@
         <junit.version>4.12</junit.version>
         <spring.version>5.0.2.RELEASE</spring.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
+        <jstl.version>1.2</jstl.version>
+        <taglibs.version>1.1.2</taglibs.version>
     </properties>
 
     <dependencies>
@@ -38,6 +40,14 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- https://stackoverflow.com/questions/15113628/java-lang-classnotfoundexception-javax-servlet-jsp-jstl-core-config -->
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
     </dependencies>
 
@@ -62,6 +72,8 @@
                 <version>3.2.0</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <!-- https://stackoverflow.com/a/32881518/8636388 -->
+                    <warName>${artifactId}</warName>
                 </configuration>
             </plugin>
         </plugins>
